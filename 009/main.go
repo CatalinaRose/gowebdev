@@ -16,7 +16,7 @@ func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/about", about)
 	http.HandleFunc("/contact", contact)
-	http.HandleFunc(":8080", nil)
+	http.ListenAndServe(":8080", nil)
 
 }
 
