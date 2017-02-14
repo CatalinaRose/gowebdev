@@ -1,6 +1,5 @@
 package main
 
-
 import (
 	"net/http"
 	"html/template"
@@ -9,7 +8,7 @@ import (
 var tpl *template.Template
 
 func init() {
-	tpl = template.Must(template.ParseGlob("template/*.gohtml"))
+	tpl = template.Must(template.ParseGlob("template/.*gohtml"))
 }
 
 func main() {
@@ -17,7 +16,6 @@ func main() {
 	http.HandleFunc("/about", about)
 	http.HandleFunc("/contact", contact)
 	http.ListenAndServe(":8080", nil)
-
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
@@ -27,7 +25,8 @@ func index(w http.ResponseWriter, r *http.Request) {
 func about(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "about.gohtml", nil)
 }
-
 func contact(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "contact.gohtml", nil)
 }
+
+
