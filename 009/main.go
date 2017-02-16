@@ -9,7 +9,7 @@ import (
 var tpl *template.Template
 
 func init() {
-	tpl = template.Must(template.ParseGlob("template/*.gohtml"))
+	tpl = template.Must(template.ParseGlob("templatea/*.gohtml"))
 }
 
 func main() {
