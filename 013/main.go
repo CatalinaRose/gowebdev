@@ -16,7 +16,7 @@ func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/about", about)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8082", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
