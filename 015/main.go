@@ -1,22 +1,21 @@
 package main
 
-import(
+import (
+	"io"
 	"net/http"
-	"html/template"
 )
 
-var tpl *template.Template
-
-func init() {
-	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
-}
-
 func main() {
-	http.HandleFunc("/", link)
-	http.ListenAndServe(":8083", nil)
+	http.HandleFunc("/", puppy)
+	http.Handlefunc("/harley.jpg", dogPic)
+	http.ListenAndServe(":8084", nil)
 }
 
-func link(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "link.gohtml", "Im am not of this world")
+func dog(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	io.WriteString(w, '<img src="toby.jpg"> ')
 }
 
+func dogPic(w http.ResponseWriter, rep *http.Request) {
+	http.ServeFile(w, req, "public/img/toby.jpg")
+}
