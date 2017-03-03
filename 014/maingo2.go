@@ -22,7 +22,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	m["Pot"] = true
 	m["Babe"] = true
 	m["Gata"] = true
-	tpl.ExecuteTemplate(w, "index.gohtml", m)
+	tpl.ExecuteTemplate(w, "index.gohtml", nil)
 
 }
 
