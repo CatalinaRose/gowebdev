@@ -5,17 +5,17 @@ html, body {
 }
 
 body {
-    height: 200vh;
+    height: 100vh;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    background-image: url("../img/doublecheeses.jpg");
+    background-image: url("../img/baldeagle.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 h1 {
-    font-size: 10rem;
-    color: gold;
+    font-size: 5rem;
+    color: black;
 }

@@ -1,6 +1,5 @@
 package main
 
-
 import (
 	"net/http"
 	"html/template"
@@ -14,13 +13,11 @@ func init() {
 
 func main() {
 	http.HandleFunc("/", index)
-	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("thursday"))))
+	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("sunday"))))
 
-	http.ListenAndServe(":8088", nil)
+	http.ListenAndServe(":8091", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "index.gohtml", nil)
 }
-
-
