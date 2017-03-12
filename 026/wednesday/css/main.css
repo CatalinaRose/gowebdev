@@ -10,12 +10,12 @@ body {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    background-image: url("../img/slipknot2.jpg");
+    background-image: url("../img/ocean.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 h1 {
     font-size: 5rem;
-    color: cornflowerblue;
+    color: blue;
 }
