@@ -14,7 +14,7 @@ func init() {
 
 func main() {
 	http.HandleFunc("/", index)
-	http.ListenAndServe(":8085", nil)
+	http.ListenAndServe(":", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {

@@ -8,7 +8,7 @@ import (
 func main() {
 	http.HandleFunc("/", TechNine)
 	http.HandleFunc("/technine.jpg", TechNinePic)
-	http.ListenAndServe(":8084", nil)
+	http.ListenAndServe(":", nil)
 }
 
 func TechNine(w http.ResponseWriter, req *http.Request) {

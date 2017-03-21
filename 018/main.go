@@ -8,7 +8,7 @@ import (
 func main() {
 	http.HandleFunc("/", foolio)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8083", nil)
+	http.ListenAndServe(":", nil)
 }
 
 func foolio(w http.ResponseWriter, req *http.Request) {

@@ -15,7 +15,7 @@ func main() {
 	http.HandleFunc("/", index)
 	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("sunday"))))
 
-	http.ListenAndServe(":8091", nil)
+	http.ListenAndServe(":", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
