@@ -15,7 +15,7 @@ func init() {
 func main() {
 	http.HandleFunc("/", dogs)
 	http.Handle("/resources/", http.StripPrefix("/resources", http.FileServer(http.Dir("public"))))
-	http.ListenAndServe(":8091", nil)
+	http.ListenAndServe(":9095", nil)
 }
 
 func dogs(w http.ResponseWriter, req *http.Request) {

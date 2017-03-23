@@ -13,7 +13,7 @@ func main() {
 
 func cold(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	io.WriteString(w, `<img src="/assets/cold.jpg">`)
+	io.WriteString(w, `<publicpics src="/assets/cold.jpg">`)
 
 
 }
