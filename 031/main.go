@@ -1,14 +1,23 @@
 package main
 
 import (
-	"fmt"
+	"html/template"
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/", index)
-	http.HandleFunc("/yo", boogyman)
-	http.ListenAndServe(":8028", nil)
+var tpl *template.Template
+
+func init() {
+	tpl = template.Must(template.ParseFiles("templates/index.gohtml"))
 }
 
-func boogymanfidfidfidfwafh
+func main() {
+	http.HandleFunc("/", index)
+	http.Handle("/public/", http.StripPrefix("/public", http.FileServer(http.Dir("public"))))
+	http.ListenAndServe(":8050", nil)
+}
+
+func index(w http.ResponseWriter, _ *http.Request) {
+	tpl.ExecuteTemplate(w, "index.gohtml", nil)
+}
+
