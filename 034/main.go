@@ -23,7 +23,7 @@ func main() {
 func index(w http.ResponseWriter, r *http.Request) {
 	var c *http.Cookie
 	c, err := r.Cookie("user-cookie")
-	if err != nill {
+	if err != nil {
 		fmt.Println(err)
 		fmt.Printf("%T/n",c)
 	}

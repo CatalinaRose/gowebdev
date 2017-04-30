@@ -1,0 +1,82 @@
+package main
+
+
+import (
+	"net/http"
+	"github.com/satori/go.uuid"
+	"html/template"
+)
+
+type user struct {
+	UserName string
+	First string
+	Last string
+}
+
+var tpl *template.Template
+var dbUsers = map[string]user{}
+var dbSessions = map[string]string{}
+
+func init() {
+	tpl = template.Must(template.ParseGlob("templates/*.gohtml"))
+}
+
+func main() {
+	http.HandleFunc("/", index)
+	http.HandleFunc("/bar", bar)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":8093", nil)
+}
+
+func index(w http.ResponseWriter, r *http.Request){
+	c, err := r.Cookie("session")
+	if err != nil {
+		id := uuid.NewV4()
+		c = &http.Cookie {
+			Name: "session",
+			Value: id.String(),
+			HttpOnly: true,
+			Path: "/",
+		}
+		http.SetCookie(w, c)
+	}
+}
+	var u user
+	if uid, ok := dbSessions[c.value]; ok {
+		u = dbUsers[uid]
+}
+
+	if r.Method == http.MethodPost {
+		e := r.FormValue("email")
+		f := r.FormValue("first")
+		l := r.FormValue("last")
+		u = users{e, f, l}
+		dbSessions[c.value] = e
+		dbUsers[e] = u
+
+}
+
+	tpl.ExecuteTemplate(w, "index.gohtml", u)
+
+}
+
+func bar(w http.ResponseWriter, r *http.Request) {
+	c, err := r.Cookie("session")
+	if err != nil {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+
+	e, ok := dbSessions[c.Value]
+	if !ok {
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+
+	u := dbUsers[e]
+	tpl.ExecuteTemplate(w, "bar.gohtml", u)
+}
+
+
+
+
